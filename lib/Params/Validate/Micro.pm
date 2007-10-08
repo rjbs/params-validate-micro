@@ -19,11 +19,11 @@ Params::Validate::Micro - Validate parameters concisely
 
 =head1 VERSION
 
-Version 0.030
+Version 0.031
 
 =cut
 
-our $VERSION = '0.030';
+our $VERSION = '0.031';
 
 =head1 SYNOPSIS
 
@@ -208,16 +208,16 @@ sub _pos_to_named {
   my $return = {};
   while (my ($key, $val) = splice @tmpspec, 0, 2) {
     unless (@tmpargs) {
-      if ($val->{optional}) {
+      if (ref($val) eq 'HASH' and $val->{optional}) {
         last;
       } else {
-        confess "not enough arguments for $string (only got @$args)";
+        confess "not enough arguments for '$string' (only got @$args)";
       }
     }
     $return->{$key} = shift(@tmpargs);
   }
   if (@tmpargs) {
-    confess "too many arguments for $string (leftover: @tmpargs)";
+    confess "too many arguments for '$string' (leftover: @tmpargs)";
   }
   return $return;
 }

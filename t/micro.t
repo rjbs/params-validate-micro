@@ -93,3 +93,6 @@ eval {
   );
 };
 is($@, "", "validate with extra (merge)");
+
+eval { micro_validate([], q{foo}) };
+like($@, qr/not enough arguments for 'foo'/, "validate with empty arrayref");
