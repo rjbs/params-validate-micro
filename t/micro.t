@@ -25,7 +25,7 @@ micro_is(
 
 micro_is(
   q{$text},
-  { text => { type => SCALAR } },
+  { text => { type => SCALAR | OBJECT } },
   'single scalar',
 );
 
@@ -56,6 +56,14 @@ eval {
 };
 like($@, qr/multiple semicolons/,
      "multiple semicolons");
+
+eval {
+  micro_validate(
+    { foo => bless({}, "Foo") },
+    '$foo',
+  );
+};
+is($@, "", "validate with object");
 
 eval {
   micro_validate(

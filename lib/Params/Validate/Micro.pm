@@ -19,11 +19,11 @@ Params::Validate::Micro - Validate parameters concisely
 
 =head1 VERSION
 
-Version 0.031
+Version 0.032
 
 =cut
 
-our $VERSION = '0.031';
+our $VERSION = '0.032';
 
 =head1 SYNOPSIS
 
@@ -44,7 +44,7 @@ specific function name you want.
 Micro argument strings are made up of lists of parameter
 names.  Each name may have an optional sigil (one of C<< $@%
 >>), which translate directly to the Params::Validate
-constrations of SCALAR, ARRAYREF, and HASHREF, respectively.
+constrations of SCALAR | OBJECT, ARRAYREF, and HASHREF, respectively.
 
 There may be one semicolon (C<< ; >>) in your argument
 string.  If present, any parameters listed after the
@@ -139,7 +139,7 @@ my %PVSPEC = (
     type => ARRAYREF,
   },
   '$' => {
-    type => SCALAR,
+    type => SCALAR | OBJECT,
   },
 );
 
