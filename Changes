@@ -1,5 +1,9 @@
 Revision history for Params-Validate-Micro
 
+0.032   2007-10-11 hdp
+
+        '$' parameters should allow OBJECT also
+
 0.031   2007-10-08 hdp
 
         Bugfix: don't use "1" as a hashref spec
